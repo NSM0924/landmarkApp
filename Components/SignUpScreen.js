@@ -11,6 +11,8 @@ import {
 
 const LogoutScreen: () => React$Node = ({ navigation }) => {
   let secondInput;
+  let thirdInput;
+
   return (
     <>
       <View style={styles.container}>
@@ -24,8 +26,8 @@ const LogoutScreen: () => React$Node = ({ navigation }) => {
               // backgroundColor: "red",
             }}>
             <Image
-              source={require("../image/loginlogo.png")}
-              style={{ marginTop: "20%", width: "60%", resizeMode: "contain" }}
+              source={require("../image/signuplogo.png")}
+              style={{ marginTop: "20%", width: "70%", resizeMode: "contain" }}
             />
           </View>
         </View>
@@ -33,38 +35,38 @@ const LogoutScreen: () => React$Node = ({ navigation }) => {
           <View style={styles.inputForm}>
             <TextInput
               style={styles.textInput}
+              placeholder="이메일"
+              placeholderTextColor="#808080"
+              autoCapitalize="none"
+              returnKeyType="next"
+              blurOnSubmit={false}
+              onSubmitEditing={() => secondInput.focus()}
+            />
+            <TextInput
+              style={styles.textInput}
               placeholder="아이디"
               placeholderTextColor="#808080"
               autoCapitalize="none"
               returnKeyType="next"
-              onSubmitEditing={() => secondInput.focus()}
               blurOnSubmit={false}
-              autoFocus={true}
+              ref={(input) => (secondInput = input)}
+              onSubmitEditing={() => thirdInput.focus()}
             />
             <TextInput
               style={styles.textInput}
               placeholder="비밀번호"
               placeholderTextColor="#808080"
               autoCapitalize="none"
+              returnKeyType="done"
               secureTextEntry={true}
-              ref={(input) => (secondInput = input)}
-              returnKeyType="go"
+              ref={(input) => (thirdInput = input)}
             />
-            <TouchableOpacity
-              style={styles.loginBtn}
-              onPress={() => navigation.navigate("MainTab")}>
+            <TouchableOpacity style={styles.loginBtn}>
               <Text
                 style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
-                로그인
+                회원가입
               </Text>
             </TouchableOpacity>
-            <View style={styles.textArea}>
-              <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-                <Text style={styles.signupText}>
-                  랜드마크가 처음? 회원가입하기!
-                </Text>
-              </TouchableOpacity>
-            </View>
           </View>
         </View>
         {/* <View style={{ flex: 1.5 }} /> */}
@@ -99,15 +101,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
     backgroundColor: "#1c1c1c",
-  },
-  textArea: {
-    width: "70%",
-  },
-  signupText: {
-    marginTop: 20,
-    marginLeft: 5,
-    color: "#808080",
-    textDecorationLine: "underline",
   },
 });
 
