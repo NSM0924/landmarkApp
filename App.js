@@ -17,6 +17,7 @@ import HomeScreen from "./Components/HomeScreen";
 import SearchScreen from "./Components/SearchScreen";
 import FavoritesScreen from "./Components/FavoritesScreen";
 import AccountScreen from "./Components/AccountScreen";
+import WriteScreen from "./Components/WriteScreen";
 
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
@@ -57,6 +58,15 @@ const MainTab = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <Icon name="search1" color={color} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Write"
+        component={WriteScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon name="form" color={color} size={30} />
           ),
         }}
       />
