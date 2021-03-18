@@ -1,4 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
+import auth from "@react-native-firebase/auth";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -8,13 +9,58 @@ import {
   Image,
   TextInput,
 } from "react-native";
+import { LogBox } from "react-native";
+LogBox.ignoreAllLogs();
 
 const LogoutScreen: () => React$Node = ({ navigation }) => {
   let secondInput;
+
+  let [userEmail, setUserEmail] = useState("");
+  let [userPw, setUserPw] = useState("");
+
+  let [emailErrorCode, setEmailErrorCode] = useState(" ");
+  let [pwErrorCode, setPwErrorCode] = useState(" ");
+
+  function login() {
+    setEmailErrorCode(" ");
+    setPwErrorCode(" ");
+
+    if (userEmail == "") {
+      setEmailErrorCode("이메일을 입력해주세요!");
+    } else if (userPw == "") {
+      setPwErrorCode("비밀번호를 입력해주세요!");
+    } else {
+      auth()
+        .signInWithEmailAndPassword(userEmail, userPw)
+        .then(() => {
+          console.log("로그인 성공!");
+          navigation.navigate("MainTab");
+        })
+        .catch((error) => {
+          if (error.code === "auth/invalid-email") {
+            setEmailErrorCode("이메일 주소의 형식이 잘못되었습니다!");
+          }
+
+          if (error.code === "auth/user-not-found") {
+            setEmailErrorCode("가입되지 않은 이메일입니다!");
+          }
+
+          if (error.code === "auth/wrong-password") {
+            setPwErrorCode("잘못된 비밀번호입니다!");
+          }
+
+          console.error(error);
+        });
+    }
+  }
   return (
     <>
       <View style={styles.container}>
-        <View style={{ height: "30%", alignItems: "center" }}>
+        <View
+          style={{
+            height: "30%",
+            alignItems: "center",
+          }}>
           <View
             style={{
               flex: 1,
@@ -33,14 +79,17 @@ const LogoutScreen: () => React$Node = ({ navigation }) => {
           <View style={styles.inputForm}>
             <TextInput
               style={styles.textInput}
-              placeholder="아이디"
+              placeholder="이메일"
               placeholderTextColor="#808080"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => secondInput.focus()}
               blurOnSubmit={false}
               autoFocus={true}
+              value={userEmail}
+              onChangeText={(text) => setUserEmail(text)}
             />
+            <Text style={styles.errorCode}>{emailErrorCode}</Text>
             <TextInput
               style={styles.textInput}
               placeholder="비밀번호"
@@ -48,11 +97,12 @@ const LogoutScreen: () => React$Node = ({ navigation }) => {
               autoCapitalize="none"
               secureTextEntry={true}
               ref={(input) => (secondInput = input)}
-              returnKeyType="go"
+              returnKeyType="done"
+              value={userPw}
+              onChangeText={(text) => setUserPw(text)}
             />
-            <TouchableOpacity
-              style={styles.loginBtn}
-              onPress={() => navigation.navigate("MainTab")}>
+            <Text style={styles.errorCode}>{pwErrorCode}</Text>
+            <TouchableOpacity style={styles.loginBtn} onPress={login}>
               <Text
                 style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
                 로그인
@@ -89,7 +139,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#1c1c1c",
     paddingLeft: "5%",
-    marginBottom: 15,
   },
   loginBtn: {
     width: "70%",
@@ -97,7 +146,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 10,
     backgroundColor: "#1c1c1c",
   },
   textArea: {
@@ -108,6 +157,11 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     color: "#808080",
     textDecorationLine: "underline",
+  },
+  errorCode: {
+    color: "red",
+    marginTop: 3,
+    marginBottom: 3,
   },
 });
 
