@@ -18,3 +18,16 @@
 
 ## 메인 화면 / 탭 네비게이션
 <img width="300" alt="스크린샷 2021-03-14 오후 11 28 07" src="https://user-images.githubusercontent.com/77336125/111072785-6f235900-851f-11eb-93dc-1d28c640c541.png">
+
+# 4day
+## Firebase 회원가입
+<img width="300" alt="signuptest" src="https://user-images.githubusercontent.com/77336125/111479385-447e0e00-8774-11eb-9c37-2151ea16530d.gif">
+
+![스크린샷 2021-03-17 오후 10 59 24](https://user-images.githubusercontent.com/77336125/111479627-7db67e00-8774-11eb-8821-b2506675913b.png)
+
+![스크린샷 2021-03-17 오후 11 00 47](https://user-images.githubusercontent.com/77336125/111480103-f4ec1200-8774-11eb-88cf-bbbab9b1123e.png)![스크린샷 2021-03-17 오후 11 01 11](https://user-images.githubusercontent.com/77336125/111480166-06351e80-8775-11eb-97d1-f91252d1363c.png)
+
+![스크린샷 2021-03-17 오후 11 01 48](https://user-images.githubusercontent.com/77336125/111480207-1220e080-8775-11eb-8848-dcd05ba90d05.png)![스크린샷 2021-03-17 오후 11 02 16](https://user-images.githubusercontent.com/77336125/111480217-14833a80-8775-11eb-8909-55b433e88024.png)
+
+![스크린샷 2021-03-17 오후 11 02 25](https://user-images.githubusercontent.com/77336125/111480223-177e2b00-8775-11eb-9d13-3363ca1bebbe.png)
+
