@@ -6,18 +6,20 @@
  * @flow strict-local
  */
 
+import auth from "@react-native-firebase/auth";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, BackHandler } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
-import LogoutScreen from "./Components/LogoutScreen";
-import LoginScreen from "./Components/LoginScreen";
-import SignUpScreen from "./Components/SignUpScreen";
-import HomeScreen from "./Components/HomeScreen";
-import SearchScreen from "./Components/SearchScreen";
-import FavoritesScreen from "./Components/FavoritesScreen";
-import AccountScreen from "./Components/AccountScreen";
-import WriteScreen from "./Components/WriteScreen";
+import LogoutScreen from "./pages/LogoutScreen";
+import LoginScreen from "./pages/LoginScreen";
+import RegisterScreen from "./pages/RegisterScreen";
+import HomeScreen from "./pages/HomeScreen";
+import SearchScreen from "./pages/SearchScreen";
+import FavoritesScreen from "./pages/FavoritesScreen";
+import AccountScreen from "./pages/AccountScreen";
+import WriteScreen from "./pages/WriteScreen";
+import SplashScreen from "./pages/SplashScreen";
 
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
@@ -37,9 +39,10 @@ function BackBtn() {
   );
 }
 
-const MainTab = () => {
+const MainTab = ({ navigation }) => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       tabBarOptions={{
         showLabel: false,
       }}>
@@ -96,38 +99,42 @@ const App: () => React$Node = () => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Logout"
-            component={LogoutScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            // options={{ headerShown: false }}
-            options={{
-              title: "",
-              headerBackTitleVisible: false,
-              headerBackImage: BackBtn,
-            }}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={SignUpScreen}
-            // options={{ headerShown: false }}
-            options={{
-              title: "",
-              headerBackTitleVisible: false,
-              headerBackImage: BackBtn,
-            }}
-          />
+        <Stack.Navigator initialRouteName="Splash">
           <Stack.Screen
             name="MainTab"
             component={MainTab}
             options={{
               headerShown: false,
               gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name="Splash"
+            component={SplashScreen}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Logout"
+            component={LogoutScreen}
+            options={{ headerShown: false, gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+              title: "",
+              headerBackTitleVisible: false,
+              headerBackImage: BackBtn,
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{
+              title: "",
+              headerBackTitleVisible: false,
+              headerBackImage: BackBtn,
             }}
           />
         </Stack.Navigator>
