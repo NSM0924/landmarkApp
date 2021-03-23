@@ -19,7 +19,7 @@ const RegisterScreen: () => React$Node = ({ navigation }) => {
   let [userEmail, setUserEmail] = useState("");
   let [userNickname, setUserNickname] = useState("");
   let [userPw, setUserPw] = useState("");
-  let pwCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/;
+  let pwCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
   let nickCheck = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\" ]/gi;
 
   let [emailErrorCode, setEmailErrorCode] = useState(" ");
@@ -33,15 +33,26 @@ const RegisterScreen: () => React$Node = ({ navigation }) => {
 
     if (userEmail == "") {
       setEmailErrorCode("이메일을 입력해주세요!");
-    } else if (userNickname == "") {
+    }
+    if (userNickname == "") {
       setNickErrorCode("닉네임을 입력해주세요!");
-    } else if (nickCheck.test(userNickname)) {
+    }
+    if (nickCheck.test(userNickname)) {
       setNickErrorCode("사용할 수 없는 문자가 있습니다!");
-    } else if (userPw == "") {
+    }
+    if (userPw == "") {
       setPwErrorCode("비밀번호를 입력해주세요!");
-    } else if (!pwCheck.test(userPw)) {
-      setPwErrorCode("8~16자리 영문 대 소문자, 숫자를 사용하세요!");
-    } else {
+    }
+    if (!pwCheck.test(userPw)) {
+      setPwErrorCode("8~16자리 영문, 숫자를 사용하세요!");
+    }
+    if (
+      userEmail != "" &&
+      userNickname != "" &&
+      !nickCheck.test(userNickname) &&
+      userPw != "" &&
+      pwCheck.test(userPw)
+    ) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(userEmail, userPw)
@@ -68,10 +79,6 @@ const RegisterScreen: () => React$Node = ({ navigation }) => {
             console.log("That email address is already in use!");
           }
 
-          // if (error.code === "auth/invalid-email") {
-          //   alert("유효하지 않는 이메일 주소입니다!");
-          //   console.log("That email address is invalid!");
-          // }
           console.error(error);
         });
     }
@@ -111,7 +118,7 @@ const RegisterScreen: () => React$Node = ({ navigation }) => {
             <Text style={styles.errorCode}>{emailErrorCode}</Text>
             <TextInput
               style={styles.textInput}
-              placeholder="닉네임"
+              placeholder="닉네임(띄어쓰기, 특수문자 X)"
               placeholderTextColor="#808080"
               autoCapitalize="none"
               returnKeyType="next"
@@ -125,7 +132,7 @@ const RegisterScreen: () => React$Node = ({ navigation }) => {
             <Text style={styles.errorCode}>{nickErrorCode}</Text>
             <TextInput
               style={styles.textInput}
-              placeholder="비밀번호"
+              placeholder="비밀번호(8~16자리 영문, 숫자)"
               placeholderTextColor="#808080"
               autoCapitalize="none"
               returnKeyType="done"

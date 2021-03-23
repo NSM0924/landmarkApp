@@ -29,9 +29,11 @@ const LogoutScreen: () => React$Node = ({ navigation }) => {
 
     if (userEmail == "") {
       setEmailErrorCode("이메일을 입력해주세요!");
-    } else if (userPw == "") {
+    }
+    if (userPw == "") {
       setPwErrorCode("비밀번호를 입력해주세요!");
-    } else {
+    }
+    if (userEmail != "" && userPw != "") {
       firebase
         .auth()
         .signInWithEmailAndPassword(userEmail, userPw)
