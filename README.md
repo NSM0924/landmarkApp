@@ -38,3 +38,14 @@
 <img width="300" alt="스크린샷 2021-03-18 오후 11 06 42" src="https://user-images.githubusercontent.com/77336125/111641476-8bd1d080-8840-11eb-9d90-ff4cd547f8ad.png"><img width="300" alt="스크린샷 2021-03-18 오후 11 06 55" src="https://user-images.githubusercontent.com/77336125/111641702-bcb20580-8840-11eb-821c-b455b0119d02.png">
 
 <img width="300" alt="스크린샷 2021-03-18 오후 11 06 31" src="https://user-images.githubusercontent.com/77336125/111641790-d3585c80-8840-11eb-99be-9a3603fe5990.png"><img width="300" alt="스크린샷 2021-03-18 오후 11 10 39" src="https://user-images.githubusercontent.com/77336125/111641813-d94e3d80-8840-11eb-9e62-f76cd9924e7d.png">
+
+# 6day
+## 자동로그인
+<img width="300" alt="loading1" src="https://user-images.githubusercontent.com/77336125/111868199-ee9ba700-89bb-11eb-8297-c90ededa174b.gif"><img width="300" alt="loading2" src="https://user-images.githubusercontent.com/77336125/111868200-f22f2e00-89bb-11eb-91c1-9c23d368a2c2.gif">
+
+## 회원가입 수정 / 닉네임 입력창 추가
+<img width="300" alt="스크린샷 2021-03-20 오후 8 12 46" src="https://user-images.githubusercontent.com/77336125/111868326-acbf3080-89bc-11eb-9ff7-f3635bc6d968.png"><img width="300" alt="스크린샷 2021-03-20 오후 8 15 51" src="https://user-images.githubusercontent.com/77336125/111868307-8c8f7180-89bc-11eb-8ec2-fdf37ba4b482.png">
+
+<img width="300" alt="스크린샷 2021-03-20 오후 8 13 37" src="https://user-images.githubusercontent.com/77336125/111868343-c06a9700-89bc-11eb-89ab-3d4f8129a090.png"><img width="300" alt="스크린샷 2021-03-20 오후 8 14 35" src="https://user-images.githubusercontent.com/77336125/111868340-bc3e7980-89bc-11eb-940e-4ba09345ab6b.png">
+
+<img width="300" alt="스크린샷 2021-03-20 오후 8 15 00" src="https://user-images.githubusercontent.com/77336125/111868299-88fbea80-89bc-11eb-887d-affb267b58cf.png"><img width="300" alt="스크린샷 2021-03-20 오후 8 15 11" src="https://user-images.githubusercontent.com/77336125/111868304-8bf6db00-89bc-11eb-9451-62f274494072.png">
